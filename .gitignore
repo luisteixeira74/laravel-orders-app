@@ -1,0 +1,53 @@
+# Laravel padrão
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+.env
+.env.backup
+.phpunit.result.cache
+
+# Logs e cache
+/storage/logs/*
+/bootstrap/cache/*.php
+/.idea
+/.vscode
+.DS_Store
+Thumbs.db
+
+# Composer & npm
+composer.lock
+package-lock.json
+yarn.lock
+
+# Docker e bancos de dados
+/docker-compose.override.yml
+*.pid
+*.seed
+*.sql
+pgdata/
+mysql_data/
+redis_data/
+
+# Arquivos do sistema
+*.swp
+*.swo
+*.bak
+*.tmp
+*.old
+
+# Build temporário do Laravel
+/public/hot
+/public/mix-manifest.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testes
+coverage/
+phpunit.xml
+
+# Frontend (caso use Vite)
+.vite
+/.vite/deps
+/dist
