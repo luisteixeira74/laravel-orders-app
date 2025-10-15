@@ -1,31 +1,50 @@
-# laravel-orders-app
+# Laravel Orders App
 
-## Requisitos
+Aplicação Laravel para gerenciamento de pedidos, com autenticação, dashboard e CRUD de pedidos.  
+O projeto roda via Docker, usando PostgreSQL e Redis.
+
+---
+
+## Pré-requisitos
 
 - Docker
 - Docker Compose
+- Node.js e NPM (para compilar assets Tailwind, caso necessário)
 
-## Como rodar
+---
 
-1. Copie `.env.example` para `src/.env` e gere a APP_KEY:
+## Configuração inicial
+
+Todos os comandos a seguir devem ser executados **dentro da pasta `src/`**, onde estão os arquivos do Laravel.
+
+1. **Copiar o `.env.example` para `.env`**:
 
 ```bash
-cp .env.example src/.env
-# depois rode (dentro do container app ou usando composer locally):
-# docker compose run --rm app php artisan key:generate
+cp .env.example .env
 ```
 
-Suba os containers:
+2. **Construir e subir os containers do Docker (executar da raiz do projeto, onde está o docker-compose.yml)**:
 
-docker compose up -d --build
+```bash
+docker-compose up -d --build
+```
 
-Instale dependências (se necessário) e gere a key:
+3. **Rodar migrations e seeders (dentro do container laravel-app)**:
 
-docker compose exec app composer install
-docker compose exec app php artisan key:generate
+```bash
+docker exec -it laravel-app bash
+php artisan migrate --seed
+exit
+```
 
-Rode migrations:
+4. **Acessando a aplicação:**:
 
-docker compose exec app php artisan migrate
+- Frontend via Nginx: http://localhost:8080
 
-Acesse http://localhost:8080
+5. **Rodar testes (dentro do container laravel-app)**:
+
+```bash
+docker exec -it laravel-app bash
+php artisan test
+exit
+```
