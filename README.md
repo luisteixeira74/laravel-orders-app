@@ -33,18 +33,37 @@ docker-compose up -d --build
 
 ```bash
 docker exec -it laravel-app bash
+composer install
+php artisan key:generate
 php artisan migrate --seed
 exit
 ```
 
-4. **Acessando a aplicação:**:
+4. **Baixar os pacotes Node e buildar o css do Vite (fora do container, dentro de `src/`)**:
+
+```bash
+npm install
+npm run build
+```
+
+5. **Acessando a aplicação:**:
 
 - Frontend via Nginx: http://localhost:8080
 
-5. **Rodar testes (dentro do container laravel-app)**:
+6. **Rodar testes (dentro do container laravel-app)**:
 
 ```bash
 docker exec -it laravel-app bash
 php artisan test
 exit
 ```
+
+![Login](docs/images/login.webp)
+
+![Registro](docs/images/registrar.webp)
+
+![Pedidos](docs/images/pedidos.webp)
+
+![Dashboard](docs/images/dashboard.webp)
+
+![Editar](docs/images/editar.webp)
